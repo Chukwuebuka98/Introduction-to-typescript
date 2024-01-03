@@ -31,8 +31,25 @@ class ItDepartment extends Department {
 }
 
 class AccountingDepartment extends Department {
+    private lastReport: string;
+
+    get moseRecentReport() {
+        if (this.lastReport) {
+            return this.lastReport;
+        }
+        throw new Error("No report found.")
+    }
+
+    set mostRecentReport(value: string) {
+        if (!value) {
+            throw new Error("Enter a value")
+        }
+        this.addReport(value);
+    }
+
     constructor(id: string, private reports: string[]) {
         super(id, 'ACCOUNTING');
+        this.lastReport = reports[0]
     }
 
     addEmployee(name: string) {
@@ -44,6 +61,7 @@ class AccountingDepartment extends Department {
 
     addReport(text: string) {
         this.reports.push(text);
+        this.lastReport = text
     }
 
     printReport() {
@@ -65,7 +83,10 @@ console.log(it)
 
 const accounting = new AccountingDepartment("d2", [])
 
+console.log(accounting.mostRecentReport = "RECORD")
 accounting.addReport("Not so good report")
+
+console.log(accounting.mostRecentReport)
 
 accounting.printReport()
 
