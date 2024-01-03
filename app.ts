@@ -1,4 +1,4 @@
-const output = document.getElementById('console');
+const output = document.getElementById('console')!;
 
 
 function add(n1: number, n2: number) {
@@ -9,7 +9,7 @@ function add(n1: number, n2: number) {
 }
 
 const number1 = 5;
-const number2 = 2.8;
+const number2 = 5;
 
 const result = add(number1, number2);
 
