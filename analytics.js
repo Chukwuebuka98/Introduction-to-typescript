@@ -1,3 +1,5 @@
 "use strict";
-console.log("Starting 2  ");
-console.log("Emmanuel");
+function sendAnalytics(data) {
+    console.log(data);
+}
+sendAnalytics("This is the data");

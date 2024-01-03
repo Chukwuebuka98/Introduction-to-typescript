@@ -1,4 +1,5 @@
 const output = document.getElementById('console')!;
+const button = document.querySelector("button");
 
 
 function add(n1: number, n2: number) {
@@ -17,3 +18,6 @@ console.log(result);
 
 output.innerText = result;
 
+button?.addEventListener('click', () => {
+    console.log(result);
+})
