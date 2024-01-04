@@ -41,6 +41,7 @@ class ItDepartment extends Department {
 
 class AccountingDepartment extends Department {
     private lastReport: string;
+    private static instance: AccountingDepartment;
 
     get moseRecentReport() {
         if (this.lastReport) {
@@ -56,9 +57,17 @@ class AccountingDepartment extends Department {
         this.addReport(value);
     }
 
-    constructor(id: string, private reports: string[]) {
+    private constructor(id: string, private reports: string[]) {
         super(id, 'ACCOUNTING');
         this.lastReport = reports[0]
+    }
+
+    static getInstance() {
+        if (this.instance) {
+            return this.instance;
+        }
+        this.instance = new AccountingDepartment("d2", []);
+        return this.instance;
     }
 
     describe() {
@@ -97,7 +106,9 @@ it.printEmployeeInformation()
 
 console.log(it)
 
-const accounting = new AccountingDepartment("d2", [])
+// const accounting = new AccountingDepartment("d2", [])
+const accounting = AccountingDepartment.getInstance()
+console.log(accounting)
 
 console.log(accounting.mostRecentReport = "RECORD")
 accounting.addReport("Not so good report")
@@ -110,7 +121,6 @@ accounting.addEmployee('Emma')
 accounting.addEmployee('Emmanuel')
 accounting.addEmployee('Max')
 
-console.log(accounting)
 
 accounting.printEmployeeInformation()
 // const accountingCopy = { name: "Dummy", describe: accounting.describe }

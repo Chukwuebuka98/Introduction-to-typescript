@@ -77,6 +77,13 @@ var AccountingDepartment = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    AccountingDepartment.getInstance = function () {
+        if (this.instance) {
+            return this.instance;
+        }
+        this.instance = new AccountingDepartment("d2", []);
+        return this.instance;
+    };
     AccountingDepartment.prototype.describe = function () {
         console.log("Accounting Department " + this.id);
     };
@@ -104,7 +111,9 @@ it.addEmployee("Manu");
 it.describe();
 it.printEmployeeInformation();
 console.log(it);
-var accounting = new AccountingDepartment("d2", []);
+// const accounting = new AccountingDepartment("d2", [])
+var accounting = AccountingDepartment.getInstance();
+console.log(accounting);
 console.log(accounting.mostRecentReport = "RECORD");
 accounting.addReport("Not so good report");
 console.log(accounting.mostRecentReport);
@@ -112,7 +121,6 @@ accounting.printReport();
 accounting.addEmployee('Emma');
 accounting.addEmployee('Emmanuel');
 accounting.addEmployee('Max');
-console.log(accounting);
 accounting.printEmployeeInformation();
 // const accountingCopy = { name: "Dummy", describe: accounting.describe }
 // accountingCopy.describe()
