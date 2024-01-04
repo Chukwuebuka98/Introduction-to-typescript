@@ -7,6 +7,7 @@ class Department {
 
     constructor(private readonly id: string, private name: string) {
         // this.name = n;
+        console.log(Department.ficalYear);
     }
 
     static createEmployee(name: string) {

@@ -22,6 +22,7 @@ var Department = /** @class */ (function () {
         // private name: string;
         this.employees = [];
         // this.name = n;
+        console.log(Department.ficalYear);
     }
     Department.createEmployee = function (name) {
         return { name: name };
